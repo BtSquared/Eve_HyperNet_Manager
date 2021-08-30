@@ -8,7 +8,9 @@
 
 ***Description***
 
-this is a application that tracks jita market data and calculates and tracks how profittable a ship is when raffled off on the HyperNet and how profitable said ship has been over time
+as we all know internet spaceships is very serious business, and with serious business come serious spread sheets. I made this application to make one part of your internet space job much easier.
+
+this application tracks Jita market data, calculates and tracks how profitable a ship is when raffled off on the HyperNet as well as logs how profitable ships have been over time.
 
 ***Technologies Used***
 
