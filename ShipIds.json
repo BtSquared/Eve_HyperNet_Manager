@@ -182,6 +182,66 @@
   {
     "itemId": 28844,
     "name": "Rhea"
+  },
+  {
+    "itemId": 37453,
+    "name": "Crucifier Navy Issue"
+  },
+  {
+    "itemId": 17703,
+    "name": "Imperial Navy Slicer"
+  },
+  {
+    "itemId": 11184,
+    "name": "Crusader"
+  },
+  {
+    "itemId": 11186,
+    "name": "Malediction"
+  },
+  {
+    "itemId": 11393,
+    "name": "Retribution"
+  },
+  {
+    "itemId": 11365,
+    "name": "Vengeance"
+  },
+  {
+    "itemId": 11188,
+    "name": "Anathema"
+  },
+  {
+    "itemId": 12038,
+    "name": "Purifier"
+  },
+  {
+    "itemId": 11190,
+    "name": "Sentinel"
+  },
+  {
+    "itemId": 37457,
+    "name": "Deacon"
+  },
+  {
+    "itemId": 16236,
+    "name": "Coercer"
+  },
+  {
+    "itemId": 32874,
+    "name": "Dragoon"
+  },
+  {
+    "itemId": 22452,
+    "name": "Heretic"
+  },
+  {
+    "itemId": 37481,
+    "name": "Pontifex"
+  },
+  {
+    "itemId": 34317,
+    "name": "Confessor"
   }
 ]
 
