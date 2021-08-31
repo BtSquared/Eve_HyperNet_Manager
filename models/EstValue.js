@@ -2,7 +2,8 @@ const { Schema } = require('mongoose')
 
 const EstValue = new Schema(
   {
-    estVal: { type: Array, require: true }
+    name: { type: String, require: true },
+    estimatedValue: { type: Array, require: true }
   },
   { timestamps: true }
 )
