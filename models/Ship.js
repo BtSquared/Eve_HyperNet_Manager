@@ -2,6 +2,7 @@ const { Schema } = require('mongoose')
 
 const Ship = new Schema(
   {
+    shipName: { type: String, require: false },
     itemId: { type: Number, require: true },
     odds: { type: Number, require: true },
     coreCount: { type: Number, require: false },

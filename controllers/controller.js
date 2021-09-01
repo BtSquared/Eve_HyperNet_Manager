@@ -3,13 +3,9 @@ const { Ship, EstVal } = require('../models/index')
 const ShipIds = require('../ShipIds.json')
 
 const GetShip = async (req, res) => {
-  let Arr = []
   try {
-    ShipIds.map((ship) => {
-      Arr.push(ship)
-      console.log(ship)
-    })
-    res.send(Arr)
+    const ships = await Ship.find()
+    res.json(ships)
   } catch (err) {
     console.log(err)
   }
@@ -17,12 +13,23 @@ const GetShip = async (req, res) => {
 
 const GetMarketValue = async (req, res) => {
   try {
+    const hyperCoreMarket = await axios.get(
+      `https://esi.evetech.net/latest/markets/10000002/orders/?datasource=tranquility&location_id=60003760&order_type=sell&page=1&type_id=52568`
+    )
+    let hyperCoreAvg = 0
+    const hyperCoreOrders = hyperCoreMarket.data.sort(
+      (a, b) => a.price - b.price
+    )
+    for (let i = 0; i < 10; i++) {
+      hyperCoreAvg += hyperCoreOrders[i].price
+    }
+    hyperCoreAvg = hyperCoreAvg / 10
     const estValue = await EstVal.find({ name: 'EstimatedShipValue' })
     ShipIds.map(async (ship, index) => {
       const response = await axios.get(
         `https://esi.evetech.net/latest/markets/10000002/orders/?datasource=tranquility&location_id=60003760&order_type=sell&page=1&type_id=${ship.itemId}`
       )
-      let marketOrders = response.data.sort((a, b) => a.price - b.price)
+      const marketOrders = response.data.sort((a, b) => a.price - b.price)
       let sum = 0
       let listlength = 0
       if (marketOrders.length > 10) {
@@ -40,18 +47,40 @@ const GetMarketValue = async (req, res) => {
       const totalPrice = Math.floor(
         estValue[0].estimatedValue[index].EstPrice * 1.4
       )
-      const PayOut = Math.floor(totalPrice * 0.95)
-      console.log(
-        `sum => ${sum} totalPrice => ${totalPrice} shipId => ${ship.itemId}`
-      )
+      const payOut = Math.floor(totalPrice * 0.95)
+      const hyperCoreCount = Math.ceil(totalPrice / 5281172.73993)
+      const capitolRequired = hyperCoreCount * hyperCoreAvg + sum
+      const profit =
+        payOut - (totalPrice / 2) * 0.05 - hyperCoreCount * hyperCoreAvg
+      const loss = totalPrice / 2 - hyperCoreCount * hyperCoreAvg
+      const shipOdds = profit / loss
+
+      const newShip = await new Ship({
+        shipName: ship.name,
+        itemId: ship.itemId,
+        odds: shipOdds,
+        coreCount: hyperCoreCount,
+        capitolReq: capitolRequired,
+        potentialProfit: profit,
+        potentialLoss: loss
+      })
+      await newShip.save()
     })
-    // setTimeout(() => {
-    //   res.json(marketData)
-    // }, 2000)
+    setTimeout(async () => {
+      const ships = await Ship.find()
+      res.json({ ships })
+    }, 10000)
   } catch (err) {
     console.log(err)
   }
 }
+
+const DeleteShips = async (req, res) => {
+  await Ship.deleteMany()
+  const ships = await Ship.find()
+  res.json({ ships })
+}
+
 const PostEstimatedValue = async (req, res) => {
   try {
     const response = await axios.get(
