@@ -1,7 +1,6 @@
 const axios = require('axios')
 const { Ship, EstVal } = require('../models/index')
 const ShipIds = require('../ShipIds.json')
-const BASE_URL = require('../globals')
 
 const GetShip = async (req, res) => {
   let Arr = []
@@ -19,21 +18,33 @@ const GetShip = async (req, res) => {
 const GetMarketValue = async (req, res) => {
   try {
     const estValue = await EstVal.find({ name: 'EstimatedShipValue' })
-    res.json(estValue)
-    // let marketData = []
-    // ShipIds.map(async (ship) => {
-    //   const response = await axios.get(
-    //     `https://esi.evetech.net/latest/markets/10000002/orders/?datasource=tranquility&location_id=60003760&order_type=sell&page=1&type_id=${ship.itemId}`
-    //   )
-    //   let marketOrders = response.data.sort((a, b) => a.price - b.price)
-    //   let sum = 0
-    //   for (let i = 0; i < 10; i++) {
-    //     sum += marketOrders[i].price
-    //   }
-    //   sum = sum / 10
-    //   marketData.push({ marketAvg: sum, itemId: ship.itemId })
-    //   console.log(sum)
-    // })
+    ShipIds.map(async (ship, index) => {
+      const response = await axios.get(
+        `https://esi.evetech.net/latest/markets/10000002/orders/?datasource=tranquility&location_id=60003760&order_type=sell&page=1&type_id=${ship.itemId}`
+      )
+      let marketOrders = response.data.sort((a, b) => a.price - b.price)
+      let sum = 0
+      let listlength = 0
+      if (marketOrders.length > 10) {
+        for (let i = 0; i < 10; i++) {
+          sum += marketOrders[i].price
+          listlength++
+        }
+      } else {
+        for (let i = 0; i < marketOrders.length; i++) {
+          sum += marketOrders[i].price
+          listlength++
+        }
+      }
+      sum = sum / listlength
+      const totalPrice = Math.floor(
+        estValue[0].estimatedValue[index].EstPrice * 1.4
+      )
+      const PayOut = Math.floor(totalPrice * 0.95)
+      console.log(
+        `sum => ${sum} totalPrice => ${totalPrice} shipId => ${ship.itemId}`
+      )
+    })
     // setTimeout(() => {
     //   res.json(marketData)
     // }, 2000)
