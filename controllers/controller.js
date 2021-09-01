@@ -11,7 +11,7 @@ const GetShip = async (req, res) => {
   }
 }
 
-const GetMarketValue = async (req, res) => {
+const MakeShips = async (req, res) => {
   try {
     const hyperCoreMarket = await axios.get(
       `https://esi.evetech.net/latest/markets/10000002/orders/?datasource=tranquility&location_id=60003760&order_type=sell&page=1&type_id=52568`
@@ -43,16 +43,18 @@ const GetMarketValue = async (req, res) => {
           listlength++
         }
       }
+      console.log(sum, ship.itemId)
       sum = sum / listlength
       const totalPrice = Math.floor(
         estValue[0].estimatedValue[index].EstPrice * 1.4
       )
+      const ticketBuy = totalPrice / 2
       const payOut = Math.floor(totalPrice * 0.95)
       const hyperCoreCount = Math.ceil(totalPrice / 5281172.73993)
       const capitolRequired = hyperCoreCount * hyperCoreAvg + sum
-      const profit =
-        payOut - (totalPrice / 2) * 0.05 - hyperCoreCount * hyperCoreAvg
-      const loss = totalPrice / 2 - hyperCoreCount * hyperCoreAvg
+      const profit = payOut - ticketBuy * 0.05 - hyperCoreCount * hyperCoreAvg
+      const loss =
+        payOut - sum - ticketBuy * 0.05 - hyperCoreCount * hyperCoreAvg
       const shipOdds = profit / loss
 
       const newShip = await new Ship({
@@ -127,7 +129,8 @@ const UpdateEstimatedValues = async (req, res) => {
 
 module.exports = {
   GetShip,
-  GetMarketValue,
+  MakeShips,
+  DeleteShips,
   GetEstimatedValue,
   PostEstimatedValue,
   UpdateEstimatedValues
