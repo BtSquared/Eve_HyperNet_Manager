@@ -242,6 +242,134 @@
   {
     "itemId": 34317,
     "name": "Confessor"
+  },
+  {
+    "itemId": 628,
+    "name": "Arbitrator"
+  },
+  {
+    "itemId": 625,
+    "name": "Augoror"
+  },
+  {
+    "itemId": 2006,
+    "name": "Omen"
+  },
+  {
+    "itemId": 624,
+    "name": "Maller"
+  },
+  {
+    "itemId": 29337,
+    "name": "Augoror Navy Issue"
+  },
+  {
+    "itemId": 17709,
+    "name": "Omen Navy Issue"
+  },
+  {
+    "itemId": 20125,
+    "name": "Curse"
+  },
+  {
+    "itemId": 11965,
+    "name": "Pilgrim"
+  },
+  {
+    "itemId": 12003,
+    "name": "Zealot"
+  },
+  {
+    "itemId": 12019,
+    "name": "Sacrilege"
+  },
+  {
+    "itemId": 12017,
+    "name": "Devoter"
+  },
+  {
+    "itemId": 11987,
+    "name": "Guardian"
+  },
+  {
+    "itemId": 29986,
+    "name": "Legion"
+  },
+  {
+    "itemId": 16233,
+    "name": "Prophecy"
+  },
+  {
+    "itemId": 24696,
+    "name": "Harbinger"
+  },
+  {
+    "itemId": 4302,
+    "name": "Oracle"
+  },
+  {
+    "itemId": 33155,
+    "name": "Harbinger Navy Issue"
+  },
+  {
+    "itemId": 22448,
+    "name": "Absolution"
+  },
+  {
+    "itemId": 22474,
+    "name": "Damnation"
+  },
+  {
+    "itemId": 642,
+    "name": "Apocalypse"
+  },
+  {
+    "itemId": 643,
+    "name": "Armageddon"
+  },
+  {
+    "itemId": 24692,
+    "name": "Abaddon"
+  },
+  {
+    "itemId": 32305,
+    "name": "Armageddon Navy Issue"
+  },
+  {
+    "itemId": 17726,
+    "name": "Apocalypse Navy Issue"
+  },
+  {
+    "itemId": 22428,
+    "name": "Redeemer"
+  },
+  {
+    "itemId": 28659,
+    "name": "Paladin"
+  },
+  {
+    "itemId": 19744,
+    "name": "Sigil"
+  },
+  {
+    "itemId": 1944,
+    "name": "Bestower"
+  },
+  {
+    "itemId": 12733,
+    "name": "Prorator"
+  },
+  {
+    "itemId": 12753,
+    "name": "Impel"
+  },
+  {
+    "itemId": 20183,
+    "name": "Providence"
+  },
+  {
+    "itemId": 28850,
+    "name": "Ark"
   }
 ]
 
