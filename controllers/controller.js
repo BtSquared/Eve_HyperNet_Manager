@@ -53,8 +53,7 @@ const MakeShips = async (req, res) => {
       const hyperCoreCount = Math.ceil(totalPrice / 5281172.73993)
       const capitolRequired = hyperCoreCount * hyperCoreAvg + sum
       const profit = payOut - ticketBuy * 0.05 - hyperCoreCount * hyperCoreAvg
-      const loss =
-        payOut - sum - ticketBuy * 0.05 - hyperCoreCount * hyperCoreAvg
+      const loss = sum - ticketBuy * 0.05 - hyperCoreCount * hyperCoreAvg
       const shipOdds = profit / loss
 
       const newShip = await new Ship({
