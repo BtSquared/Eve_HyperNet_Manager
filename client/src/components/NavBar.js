@@ -1,11 +1,21 @@
 import { NavLink } from 'react-router-dom'
+import Logo from '../Logo.png'
 
 export default function NavBar() {
   return (
-    <div>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/ships">Ships</NavLink>
-      <NavLink to="/history">Ship Performance History</NavLink>
+    <div className="navBar">
+      <img className="logo" src={Logo} />
+      <div>
+        <NavLink to="/" className="navLink">
+          Home
+        </NavLink>
+        <NavLink to="/ships" className="navLink">
+          Ships
+        </NavLink>
+        <NavLink to="/history" className="navLink">
+          History
+        </NavLink>
+      </div>
     </div>
   )
 }
