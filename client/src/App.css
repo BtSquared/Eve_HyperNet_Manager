@@ -19,4 +19,7 @@
 .shipCard{
   display: flex;
   background-color: rgb(131, 131, 131);
+  margin: 15px;
+  padding: 10px;
+  border-radius: 12px;
 }
