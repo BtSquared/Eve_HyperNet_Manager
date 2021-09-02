@@ -25,10 +25,13 @@ const MakeShips = async (req, res) => {
     }
     hyperCoreAvg = hyperCoreAvg / 10
     const estValue = await EstVal.find({ name: 'EstimatedShipValue' })
+
     ShipIds.map(async (ship, index) => {
       const response = await axios.get(
         `https://esi.evetech.net/latest/markets/10000002/orders/?datasource=tranquility&location_id=60003760&order_type=sell&page=1&type_id=${ship.itemId}`
       )
+
+      //get average price of cheapest 10 market orders
       const marketOrders = response.data.sort((a, b) => a.price - b.price)
       let sum = 0
       let listlength = 0
@@ -45,36 +48,40 @@ const MakeShips = async (req, res) => {
       }
       console.log(sum, ship.itemId)
       sum = sum / listlength
-      const totalPrice = Math.floor(
-        estValue[0].estimatedValue[index].EstPrice * 1.4
-      )
-      const ticketBuy = totalPrice / 2
-      const payOut = Math.floor(totalPrice * 0.95)
-      const hyperCoreCount = Math.ceil(totalPrice / 5281172.73993)
-      const capitolRequired = hyperCoreCount * hyperCoreAvg + sum
-      const profit = Math.floor(
-        payOut - ticketBuy * 0.05 - hyperCoreCount * hyperCoreAvg
-      )
-      const loss = Math.floor(
-        sum - ticketBuy * 0.05 - hyperCoreCount * hyperCoreAvg
-      )
-      const shipOdds = profit / loss
 
-      const newShip = await new Ship({
-        shipName: ship.name,
-        itemId: ship.itemId,
-        odds: shipOdds.toFixed(3),
-        coreCount: hyperCoreCount,
-        capitolReq: capitolRequired,
-        potentialProfit: profit,
-        potentialLoss: loss
-      })
-      await newShip.save()
+      //math values
+      setTimeout(async () => {
+        const totalPrice = Math.floor(
+          estValue[0].estimatedValue[index].EstPrice * 1.4
+        )
+        const ticketBuy = totalPrice / 2
+        const payOut = Math.floor(totalPrice * 0.95)
+        const hyperCoreCount = Math.ceil(totalPrice / 5281172.73993)
+        const capitolRequired = hyperCoreCount * hyperCoreAvg + sum
+        const profit = Math.floor(
+          payOut - ticketBuy * 0.05 - hyperCoreCount * hyperCoreAvg
+        )
+        const loss = Math.floor(
+          sum - ticketBuy * 0.05 - hyperCoreCount * hyperCoreAvg
+        )
+        const shipOdds = profit / loss
+
+        const newShip = await new Ship({
+          shipName: ship.name,
+          itemId: ship.itemId,
+          odds: shipOdds.toFixed(3),
+          coreCount: hyperCoreCount,
+          capitolReq: capitolRequired,
+          potentialProfit: profit,
+          potentialLoss: loss
+        })
+        await newShip.save()
+      }, 10000)
     })
     setTimeout(async () => {
       const ships = await Ship.find()
       res.json({ ships })
-    }, 10000)
+    }, 20000)
   } catch (err) {
     console.log(err)
   }
