@@ -52,18 +52,12 @@ const MakeShips = async (req, res) => {
       const totalPrice = Math.floor(
         estValue[0].estimatedValue[index].EstPrice * 1.4
       )
-      const ticketBuy = totalPrice / 2
       const payOut = Math.floor(totalPrice * 0.95)
       const hyperCoreCount = Math.ceil(totalPrice / 5281172.73993)
       const capitolRequired = hyperCoreCount * hyperCoreAvg + sum
-      const profit = Math.floor(
-        payOut - ticketBuy * 0.05 - hyperCoreCount * hyperCoreAvg
-      )
-      const loss = Math.floor(
-        sum - ticketBuy * 0.05 - hyperCoreCount * hyperCoreAvg
-      )
+      const profit = Math.floor(payOut / 2 - hyperCoreCount * hyperCoreAvg)
+      const loss = Math.floor(capitolRequired - payOut / 2)
       const shipOdds = profit / loss
-
       const newShip = await new Ship({
         shipName: ship.name,
         itemId: ship.itemId,
