@@ -4,27 +4,37 @@
 }
 .App {
   text-align: center;
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsupport.eveonline.com%2Fhc%2Farticle_attachments%2F360007795060%2FHyperNetBasic_570x250.jpg&f=1&nofb=1');
+  background-image: url('./hypernet.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
 }
+
 .navBar {
+  position: fixed;
+  top: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   background-color: hsl(0, 0%, 14%);
+
 }
 .navLink {
+  font-family: 'Oxygen', sans-serif;
   color: hsl(0, 0%, 94%);
   text-decoration: none;
   font-size: 24px;
+  font-weight: 600;
   padding: 10px;
-  margin: 12px 24px 12px 24px;
+  margin: 0px 1vw 0px 2vw;
   border-radius: 8px;
 }
 .shipCardCon{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  padding-top: 60px;
 }
 .shipCard{
   font-family: 'Oxygen', sans-serif;
@@ -34,8 +44,10 @@
   align-items: center;
   background-color: hsla(0, 0%, 76%, 0.406);
   margin: 15px;
-  padding: 10px;
+  padding: 15px;
   border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
 }
 .shipDivs {
   margin: 8px;
