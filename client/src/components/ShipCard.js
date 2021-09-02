@@ -3,6 +3,7 @@ export default function ShipCard(props) {
   const capitol = props.capitol.toLocaleString('en-US')
   const profit = props.profit.toLocaleString('en-US')
   const loss = props.loss.toLocaleString('en-US')
+  const returns = ((props.odds - 1) * 100).toFixed(1)
   return (
     <div className="shipCard">
       <img className="shipIcon" src={URL} />
@@ -20,7 +21,7 @@ export default function ShipCard(props) {
               : { color: 'hsla(0, 80%, 48%, 0.865)' }
           }
         >
-          Odds: {props.odds}
+          Return: {returns}%
         </div>
         <div
           className="shipDivs nums"
