@@ -1,5 +1,11 @@
+@font-face {
+  font-family: 'Oxygen', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Oxygen:wght@700&display=swap');
+}
 .App {
   text-align: center;
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsupport.eveonline.com%2Fhc%2Farticle_attachments%2F360007795060%2FHyperNetBasic_570x250.jpg&f=1&nofb=1');
+  background-size: cover;
 }
 .navBar {
   display: flex;
@@ -16,10 +22,35 @@
   margin: 12px 24px 12px 24px;
   border-radius: 8px;
 }
+.shipCardCon{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
 .shipCard{
+  font-family: 'Oxygen', sans-serif;
+  font-size: 18px;
   display: flex;
-  background-color: rgb(131, 131, 131);
+  justify-content: space-between;
+  align-items: center;
+  background-color: hsla(0, 0%, 76%, 0.406);
   margin: 15px;
   padding: 10px;
   border-radius: 12px;
+}
+.shipDivs {
+  margin: 8px;
+  align-self: center;
+}
+.shipIcon {
+  width: 100px;
+  height: 100px;
+  align-self: center;
+  border-radius: 10px;
+}
+.nums{
+  color: rgb(227, 227, 227);
+  background-color: rgba(23, 23, 23, 0.934);
+  padding: 7px 20px 7px 20px;
+  margin: 5px;
+  border-radius: 10px;
 }

@@ -18,7 +18,7 @@ export default function Ships() {
 
   return (
     <div>
-      <div>
+      <div className="shipCardCon">
         {ships.map((ship) => (
           <ShipCard
             key={ship._id}
