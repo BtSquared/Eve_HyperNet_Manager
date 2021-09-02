@@ -2,6 +2,7 @@ import './App.css'
 import { Route, Switch } from 'react-router-dom'
 //Pages
 import Home from './pages/Home'
+import Ships from './pages/Ships'
 
 //components
 import NavBar from './components/NavBar'
@@ -13,7 +14,7 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/ships" />
+          <Route exact path="/ships" component={Ships} />
           <Route exact path="/history" />
         </Switch>
       </div>
