@@ -111,7 +111,7 @@ const PostEstimatedValue = async (req, res) => {
       estimatedValue: filtered
     })
     await estVal.save()
-    res.josn({ estVal })
+    res.json({ estVal })
   } catch (err) {
     console.log(err)
   }
