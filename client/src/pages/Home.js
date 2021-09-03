@@ -5,7 +5,13 @@ export default function Home() {
         <div className="banner">Eve HyperNet Manager</div>
         <div className="infoCon">
           <div className="info infoOne">
-            <h1>Tag descriptions</h1>
+            <h1>Info</h1>
+            <h3>Updating Ships</h3>
+            <div className="infoText">
+              when updating ships please allow 1 - 2 minutes, the page will
+              refresh. this site is run off of free services and if its free its
+              definitly not fast
+            </div>
             <h3>HyperCore</h3>
             <div className="infoText">
               is the amount of HyperCores needed per hyperNet contract
@@ -16,7 +22,7 @@ export default function Home() {
             <div className="infoText">is isk lost the per contract loss</div>
           </div>
           <div className="info infoTwo">
-            <h1>Tag descriptions</h1>
+            <h1>Info</h1>
             <h3>Return</h3>
             <div className="infoText">
               is the "Odds" of said ship and is the ratio of profit to loss per
