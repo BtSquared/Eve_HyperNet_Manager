@@ -2,14 +2,23 @@
   font-family: 'Oxygen', sans-serif;
   src: url('https://fonts.googleapis.com/css2?family=Oxygen:wght@700&display=swap');
 }
+
+h1 {
+  font-size: 3vh;
+}
+
+h3 {
+  font-size: 2vh;
+}
+
 .App {
   text-align: center;
   background-image: url('./hypernet.jpeg');
-  background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   width: 100%;
 }
+
 .navBar {
   position: fixed;
   top: 0px;
@@ -19,6 +28,7 @@
   width: 100%;
   background-color: hsl(0, 0%, 14%);
 }
+
 .navLink {
   font-family: 'Oxygen', sans-serif;
   color: hsl(0, 0%, 94%);
@@ -29,12 +39,14 @@
   margin: 0px 1vw 0px 2vw;
   border-radius: 8px;
 }
+
 .shipCardCon{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   padding-top: 60px;
 }
+
 .homeCon{
   display: grid;
   grid-column: repeat(3, 1fr);
@@ -43,6 +55,14 @@
   height: 100vh;
   color: white;
 }
+
+.infoCon {
+  grid-row: 3/4;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 .shipCard{
   font-family: 'Oxygen', sans-serif;
   font-size: 18px;
@@ -56,16 +76,28 @@
   width: 90%;
   max-width: 600px;
 }
+
 .shipDivs {
   margin: 8px;
   align-self: center;
 }
+
 .shipIcon {
   width: 100px;
   height: 100px;
   align-self: center;
   border-radius: 10px;
 }
+
+.info {
+  width: 25vw;
+  height: 80%;
+  background-color: hsla(0, 0%, 47%, 0.824);
+  padding: 30px;
+  margin: 15px;
+  border-radius: 20px;
+}
+
 .nums{
   color: rgb(227, 227, 227);
   background-color: rgba(23, 23, 23, 0.934);
@@ -73,12 +105,15 @@
   margin: 5px;
   border-radius: 10px;
 }
+
 .button {
   text-decoration: none;
   border: none;
   background-color: hsl(0, 0%, 14%);
 }
+
 .banner {
+  font-family: 'Oxygen', sans-serif;
   font-size: 10vh;
   background-color: hsla(0, 0%, 47%, 0.824);
   padding: 2vh;
@@ -87,4 +122,7 @@
   margin: 2vh;
   justify-self: center;
   align-self: center;
+}
+.infoText {
+  font-size: 2vh;
 }
