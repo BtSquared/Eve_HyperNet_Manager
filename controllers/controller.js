@@ -187,7 +187,7 @@ const PostEstimatedValue = async (req, res) => {
     await estVal.save()
     res.json({ estVal })
   } catch (err) {
-    res.send(err)
+    res.send({ err })
   }
 }
 
