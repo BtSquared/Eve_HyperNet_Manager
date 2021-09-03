@@ -7,7 +7,7 @@ const GetShip = async (req, res) => {
     const ships = await Ship.find()
     res.json({ ships })
   } catch (err) {
-    console.log(err)
+    res.send(err)
   }
 }
 
@@ -75,7 +75,7 @@ const MakeShips = async (req, res) => {
     const ships = await Ship.find()
     res.json({ ships })
   } catch (err) {
-    console.log(err)
+    res.send(err)
   }
 }
 
@@ -145,7 +145,7 @@ const UpdateShips = async (req, res) => {
     const ships = await Ship.find()
     res.json({ ships })
   } catch (err) {
-    console.log(err)
+    res.send(err)
   }
 }
 
@@ -160,7 +160,7 @@ const GetEstimatedValue = async (req, res) => {
     const estVal = await EstVal.find({ name: 'EstimatedShipValue' })
     res.json({ estVal })
   } catch (err) {
-    console.log(err)
+    res.send(err)
   }
 }
 
@@ -187,7 +187,7 @@ const PostEstimatedValue = async (req, res) => {
     await estVal.save()
     res.json({ estVal })
   } catch (err) {
-    console.log(err)
+    res.send(err)
   }
 }
 
@@ -215,7 +215,7 @@ const UpdateEstimatedValues = async (req, res) => {
     const check = await EstVal.find()
     res.json({ check })
   } catch (err) {
-    console.log(err)
+    res.send(err)
   }
 }
 

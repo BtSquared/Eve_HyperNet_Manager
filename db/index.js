@@ -9,8 +9,7 @@ let MONGODB_URI =
 mongoose
   .connect(MONGODB_URI, {
     useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useFindAndModify: true
+    useNewUrlParser: true
   })
   .then(() => {
     console.log('Successfully connected to MongoDB.')
