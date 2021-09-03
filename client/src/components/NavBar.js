@@ -5,16 +5,10 @@ import { BASE_URL } from '../globals'
 
 export default function NavBar() {
   async function updateShips() {
-    const deleteShips = await axios.delete(`${BASE_URL}/api/ships/nukeships`)
-    console.log(deleteShips)
-    const deleteEstVal = await axios.delete(
-      `${BASE_URL}/api/ships/nukeestimatedvalue`
-    )
-    console.log(deleteEstVal)
-    const postEstVal = await axios.post(`${BASE_URL}/api/ships/estimatedvalue`)
-    console.log(postEstVal)
-    const postMakeShips = await axios.post(`${BASE_URL}/api/ships/makeships`)
-    console.log(postMakeShips)
+    const putEstVal = await axios.put(`${BASE_URL}/api/ships/updateestval`)
+    console.log(putEstVal)
+    const putMakeShips = await axios.put(`${BASE_URL}/api/ships/updateships`)
+    console.log(putMakeShips)
     window.location.reload()
   }
   return (
