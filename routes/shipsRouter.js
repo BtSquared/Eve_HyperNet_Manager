@@ -6,6 +6,8 @@ router.get('/', controller.GetShip)
 router.get('/getestimatedvalue', controller.GetEstimatedValue)
 router.post('/makeships', controller.MakeShips)
 router.post('/estimatedvalue', controller.PostEstimatedValue)
+router.put('/updateestval', controller.UpdateEstimatedValues)
+router.put('/updateships', controller.UpdateShips)
 router.delete('/nukeships', controller.NukeShips)
 router.delete('/nukeestimatedvalue', controller.NukeEstVal)
 

@@ -30,10 +30,6 @@ export default function NavBar() {
         <button className="navLink button" onClick={updateShips}>
           Update Ships
         </button>
-        {/* yes  i know this is commited out code this is for a future update 
-        <NavLink to="/history" className="navLink">
-          History
-        </NavLink> */}
       </div>
     </div>
   )
