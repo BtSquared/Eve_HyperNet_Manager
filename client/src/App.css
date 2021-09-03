@@ -35,6 +35,14 @@
   justify-items: center;
   padding-top: 60px;
 }
+.homeCon{
+  display: grid;
+  grid-column: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr 4fr;
+  padding-top: 60px;
+  height: 100vh;
+  color: white;
+}
 .shipCard{
   font-family: 'Oxygen', sans-serif;
   font-size: 18px;
@@ -69,4 +77,14 @@
   text-decoration: none;
   border: none;
   background-color: hsl(0, 0%, 14%);
+}
+.banner {
+  font-size: 10vh;
+  background-color: hsla(0, 0%, 47%, 0.824);
+  padding: 2vh;
+  width: 90vw;
+  border-radius: 5vh;
+  margin: 2vh;
+  justify-self: center;
+  align-self: center;
 }
