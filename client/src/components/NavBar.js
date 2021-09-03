@@ -5,6 +5,7 @@ import { BASE_URL } from '../globals'
 
 export default function NavBar() {
   async function updateShips() {
+    console.log(BASE_URL)
     const putEstVal = await axios.put(`${BASE_URL}/ships/updateestval`)
     console.log(putEstVal)
     const putMakeShips = await axios.put(`${BASE_URL}/ships/updateships`)
