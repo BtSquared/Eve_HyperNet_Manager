@@ -25,9 +25,9 @@ const MakeShips = async (req, res) => {
     }
     hyperCoreAvg = hyperCoreAvg / 10
     const estValue = await EstVal.find({ name: 'EstimatedShipValue' })
-    ShipIds.map(async (ship, index) => {
+    for (let i = 0; i < ShipIds.length; i++) {
       const response = await axios.get(
-        `https://esi.evetech.net/latest/markets/10000002/orders/?datasource=tranquility&location_id=60003760&order_type=sell&page=1&type_id=${ship.itemId}`
+        `https://esi.evetech.net/latest/markets/10000002/orders/?datasource=tranquility&location_id=60003760&order_type=sell&page=1&type_id=${ShipIds[i].itemId}`
       )
 
       //get average price of cheapest 10 market orders
@@ -35,13 +35,13 @@ const MakeShips = async (req, res) => {
       let sum = 0
       let listlength = 0
       if (marketOrders.length > 10) {
-        for (let i = 0; i < 10; i++) {
-          sum += marketOrders[i].price
+        for (let j = 0; j < 10; j++) {
+          sum += marketOrders[j].price
           listlength++
         }
       } else {
-        for (let i = 0; i < marketOrders.length; i++) {
-          sum += marketOrders[i].price
+        for (let j = 0; j < marketOrders.length; j++) {
+          sum += marketOrders[j].price
           listlength++
         }
       }
@@ -49,7 +49,7 @@ const MakeShips = async (req, res) => {
 
       //math values
       const totalPrice = Math.floor(
-        estValue[0].estimatedValue[index].EstPrice * 1.4
+        estValue[0].estimatedValue[i].EstPrice * 1.4
       )
       const ticketBuy = Math.floor(totalPrice / 2)
       const payOut = Math.floor(totalPrice * 0.95)
@@ -62,8 +62,8 @@ const MakeShips = async (req, res) => {
       const shipOdds = profit / loss
 
       const newShip = await new Ship({
-        shipName: ship.name,
-        itemId: ship.itemId,
+        shipName: ShipIds[i].name,
+        itemId: ShipIds[i].itemId,
         odds: shipOdds.toFixed(3),
         coreCount: hyperCoreCount,
         capitolReq: capitolRequired,
@@ -71,11 +71,9 @@ const MakeShips = async (req, res) => {
         potentialLoss: loss
       })
       await newShip.save()
-    })
-    setTimeout(async () => {
-      const ships = await Ship.find()
-      res.json({ ships })
-    }, 10000)
+    }
+    const ships = await Ship.find()
+    res.json({ ships })
   } catch (err) {
     console.log(err)
   }
@@ -95,9 +93,9 @@ const UpdateShips = async (req, res) => {
     }
     hyperCoreAvg = hyperCoreAvg / 10
     const estValue = await EstVal.find({ name: 'EstimatedShipValue' })
-    ShipIds.map(async (ship, index) => {
+    for (let i = 0; i < ShipIds.length; i++) {
       const response = await axios.get(
-        `https://esi.evetech.net/latest/markets/10000002/orders/?datasource=tranquility&location_id=60003760&order_type=sell&page=1&type_id=${ship.itemId}`
+        `https://esi.evetech.net/latest/markets/10000002/orders/?datasource=tranquility&location_id=60003760&order_type=sell&page=1&type_id=${ShipIds[i].itemId}`
       )
       //get average price of cheapest 10 market orders
       const marketOrders = response.data.sort((a, b) => a.price - b.price)
@@ -118,7 +116,7 @@ const UpdateShips = async (req, res) => {
 
       //math values
       const totalPrice = Math.floor(
-        estValue[0].estimatedValue[index].EstPrice * 1.4
+        estValue[0].estimatedValue[i].EstPrice * 1.4
       )
       const ticketBuy = Math.floor(totalPrice / 2)
       const payOut = Math.floor(totalPrice * 0.95)
@@ -132,7 +130,7 @@ const UpdateShips = async (req, res) => {
 
       await Ship.findOneAndUpdate(
         {
-          itemId: ship.itemId
+          itemId: ShipIds[i].itemId
         },
         {
           odds: shipOdds.toFixed(3),
@@ -143,11 +141,9 @@ const UpdateShips = async (req, res) => {
         },
         { new: true }
       )
-    })
-    setTimeout(async () => {
-      const ships = await Ship.find()
-      res.json({ ships })
-    }, 10000)
+    }
+    const ships = await Ship.find()
+    res.json({ ships })
   } catch (err) {
     console.log(err)
   }
