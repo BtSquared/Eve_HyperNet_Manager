@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { Ship } = require('../models/index')
+const { Ship, EstVal } = require('../models/index')
 const ShipIds = require('../ShipIds.json')
 
 const GetShips = async (req, res) => {
@@ -84,6 +84,7 @@ const UpdateShips = async (req, res) => {
     const hyperCoreMarket = await axios.get(
       `https://esi.evetech.net/latest/markets/10000002/orders/?datasource=tranquility&location_id=60003760&order_type=sell&page=1&type_id=52568`
     )
+    console.log(hyperCoreMarket.data)
     let hyperCoreAvg = 0
     const hyperCoreOrders = hyperCoreMarket.data.sort(
       (a, b) => a.price - b.price
@@ -93,6 +94,7 @@ const UpdateShips = async (req, res) => {
     }
     hyperCoreAvg = hyperCoreAvg / 10
     const estValue = await EstVal.find({ name: 'EstimatedShipValue' })
+    console.log(estValue.data)
     for (let i = 0; i < ShipIds.length; i++) {
       const response = await axios.get(
         `https://esi.evetech.net/latest/markets/10000002/orders/?datasource=tranquility&location_id=60003760&order_type=sell&page=1&type_id=${ShipIds[i].itemId}`
