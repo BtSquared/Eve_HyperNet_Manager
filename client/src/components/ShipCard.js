@@ -6,11 +6,9 @@ export default function ShipCard(props) {
 
   return (
     <div className="shipCard">
-      <img className="shipIcon" src={URL} />
       <div>
+        <img className="shipIcon" src={URL} />
         <div className="shipDivs nums">{props.name}</div>
-        <div className="shipDivs nums">HyperCores: {props.core}</div>
-        <div className="shipDivs nums">Capitol: {capitol}</div>
       </div>
       <div>
         <div
@@ -23,6 +21,10 @@ export default function ShipCard(props) {
         >
           Return: {props.odds}
         </div>
+        <div className="shipDivs nums">HyperCores: {props.core}</div>
+        <div className="shipDivs nums">Capitol: {capitol}</div>
+      </div>
+      <div>
         <div
           className="shipDivs nums"
           style={{ color: 'hsla(117, 77%, 45%, 0.865)' }}

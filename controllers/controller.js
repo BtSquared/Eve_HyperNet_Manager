@@ -225,6 +225,8 @@ const NukeEstVal = async (req, res) => {
   res.json({ estVal })
 }
 
+const getActiveContracts = function () {}
+
 module.exports = {
   GetShip,
   MakeShips,

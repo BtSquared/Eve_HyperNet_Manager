@@ -8,7 +8,7 @@ export default function Ships() {
 
   useEffect(async () => {
     try {
-      const res = await axios.get(`${BASE_URL}/ships/`)
+      const res = await axios.get(`http://localhost:3001/api/ships/`)
       console.log(res)
       const sortedArr = res.data.ships.sort((a, b) => b.odds - a.odds)
       setShips(sortedArr)
