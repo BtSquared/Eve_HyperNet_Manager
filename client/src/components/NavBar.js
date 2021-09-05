@@ -22,6 +22,9 @@ export default function NavBar() {
         <NavLink to="/ships" className="navLink">
           Ships
         </NavLink>
+        <NavLink to="/contracts" className="navLink">
+          Active Contracts
+        </NavLink>
         <button className="navLink button" onClick={updateShips}>
           Update Ships
         </button>
