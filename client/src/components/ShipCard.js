@@ -4,6 +4,16 @@ export default function ShipCard(props) {
   const profit = props.profit.toLocaleString('en-US')
   const loss = props.loss.toLocaleString('en-US')
 
+  const handleChange = (e) => {
+    if (e.target.value >= 10) {
+      props.setInput(10)
+    } else if (e.target.value <= 0) {
+      props.setInput('')
+    } else {
+      props.setInput(Math.floor(e.target.value))
+    }
+  }
+
   return (
     <div className="shipCard">
       <div>
@@ -36,6 +46,15 @@ export default function ShipCard(props) {
           style={{ color: 'hsla(0, 80%, 48%, 0.865)' }}
         >
           Loss: {loss}
+        </div>
+        <div className="buttonDiv">
+          <input
+            type="number"
+            className="contractNum"
+            value={props.inputVal}
+            onChange={handleChange}
+          ></input>
+          <button>Add</button>
         </div>
       </div>
     </div>

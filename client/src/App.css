@@ -123,6 +123,22 @@ h3 {
   justify-self: center;
   align-self: center;
 }
+
 .infoText {
   font-size: 2vh;
+}
+
+.contractNum {
+  width: 30px;
+  text-align: center;
+}
+
+.contractNum::-webkit-outer-spin-button,
+.contractNum::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }

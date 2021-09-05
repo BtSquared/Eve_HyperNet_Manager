@@ -5,6 +5,7 @@ import ShipCard from '../components/ShipCard'
 
 export default function Ships() {
   const [ships, setShips] = useState([])
+  const [contractTrack, setContractTrack] = useState(0)
 
   useEffect(async () => {
     try {
@@ -30,6 +31,8 @@ export default function Ships() {
             capitol={ship.capitolReq}
             profit={ship.potentialProfit}
             loss={ship.potentialLoss}
+            inputVal={contractTrack}
+            setInput={setContractTrack}
           />
         ))}
       </div>
