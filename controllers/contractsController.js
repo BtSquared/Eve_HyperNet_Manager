@@ -4,8 +4,8 @@ const ShipIds = require('../ShipIds.json')
 
 const getContracts = async (req, res) => {
   try {
-    const contract = Contract.find()
-    res.json({ contract })
+    const contract = await Contract.find()
+    res.send(contract)
   } catch (err) {
     console.log(err)
   }
@@ -26,9 +26,22 @@ const postContract = async (req, res) => {
 
 const updateContract = async (req, res) => {
   try {
-    const contract = await Contract.find()
-    console.log(contract)
+    const contractid = await Contract.find()
+    const contract = await Contract.findByIdAndUpdate(contractid[0]._id, {
+      activeContracts: [...contractid, req.body]
+    })
+    res.json(contract)
     // await Contract.findOneAndUpdate({ ObjectId: req.body.Id }, {})
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+const nukeContract = async (req, res) => {
+  try {
+    await Contract.deleteMany()
+    const contract = await Contract.find()
+    res.json({ contract })
   } catch (err) {
     console.log(err)
   }
@@ -37,5 +50,6 @@ const updateContract = async (req, res) => {
 module.exports = {
   getContracts,
   postContract,
-  updateContract
+  updateContract,
+  nukeContract
 }
