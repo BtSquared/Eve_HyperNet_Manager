@@ -5,7 +5,7 @@ const ShipIds = require('../ShipIds.json')
 const getContracts = async (req, res) => {
   try {
     const contract = await Contract.find()
-    res.send(contract)
+    res.json({ contract })
   } catch (err) {
     console.log(err)
   }
@@ -26,13 +26,19 @@ const postContract = async (req, res) => {
 
 const updateContract = async (req, res) => {
   try {
-    console.log(req.body)
     const contractid = await Contract.find()
-    const contract = await Contract.findByIdAndUpdate(contractid[0]._id, {
-      activeContracts: [...contractid[0].activeContracts]
+    await Contract.findByIdAndUpdate(contractid[0]._id, {
+      activeContracts: [...contractid[0].activeContracts, req.body]
     })
-    res.json(contract)
-    // await Contract.findOneAndUpdate({ ObjectId: req.body.Id }, {})
+    const updatedContract = await Contract.find()
+    res.json({ updatedContract })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+const deleteContract = async (req, res) => {
+  try {
   } catch (err) {
     console.log(err)
   }

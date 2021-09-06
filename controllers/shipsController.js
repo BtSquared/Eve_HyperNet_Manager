@@ -138,6 +138,7 @@ const UpdateShips = async (req, res) => {
         {
           odds: shipOdds.toFixed(3),
           coreCount: hyperCoreCount,
+          coreCost: hyperCoreCost,
           capitolReq: capitolRequired,
           potentialProfit: profit,
           potentialLoss: loss

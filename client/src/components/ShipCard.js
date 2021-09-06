@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 
@@ -6,25 +7,31 @@ export default function ShipCard(props) {
   const capitol = props.capitol.toLocaleString('en-US')
   const profit = props.profit.toLocaleString('en-US')
   const loss = props.loss.toLocaleString('en-US')
+  const [contractTrack, setContractTrack] = useState(0)
 
   const handleChange = (e) => {
     if (e.target.value >= 10) {
-      props.setInput(10)
+      setContractTrack(10)
     } else if (e.target.value <= 0) {
-      props.setInput('')
+      setContractTrack('')
     } else {
-      props.setInput(Math.floor(e.target.value))
+      setContractTrack(Math.floor(e.target.value))
     }
   }
 
   const handleClick = async () => {
-    const res = await axios.put(`${BASE_URL}/contract/postcontract`, {
-      name: props.name,
-      odds: props.odds,
-      profit: props.profit,
-      loss: props.loss,
-      coreCost: props.coreCost
-    })
+    for (let i = 0; i < contractTrack; i++) {
+      await axios.put(`${BASE_URL}/contract/updatecontract`, {
+        name: props.name,
+        objectId: props.objectId,
+        itemId: props.itemId,
+        odds: props.odds,
+        profit: props.profit,
+        loss: props.loss,
+        coreCost: props.coreCost
+      })
+    }
+    setContractTrack(0)
   }
 
   return (
@@ -64,7 +71,7 @@ export default function ShipCard(props) {
           <input
             type="number"
             className="contractNum"
-            value={props.inputVal}
+            value={contractTrack}
             onChange={handleChange}
           ></input>
           <button onClick={handleClick}>Add</button>

@@ -3,9 +3,8 @@ import axios from 'axios'
 import { BASE_URL } from '../globals'
 import ShipCard from '../components/ShipCard'
 
-export default function Ships(props) {
+export default function Ships() {
   const [ships, setShips] = useState([])
-  const [contractTrack, setContractTrack] = useState(0)
 
   useEffect(async () => {
     try {
@@ -22,20 +21,20 @@ export default function Ships(props) {
     <div>
       <div className="shipCardCon">
         {ships.map((ship) => (
-          <ShipCard
-            key={ship._id}
-            objectId={ship._id}
-            itemId={ship.itemId}
-            name={ship.shipName}
-            odds={ship.odds}
-            core={ship.coreCount}
-            coreCost={ship.coreCost}
-            capitol={ship.capitolReq}
-            profit={ship.potentialProfit}
-            loss={ship.potentialLoss}
-            inputVal={contractTrack}
-            setInput={setContractTrack}
-          />
+          <div>
+            <ShipCard
+              key={ship._id}
+              objectId={ship._id}
+              itemId={ship.itemId}
+              name={ship.shipName}
+              odds={ship.odds}
+              core={ship.coreCount}
+              coreCost={ship.coreCost}
+              capitol={ship.capitolReq}
+              profit={ship.potentialProfit}
+              loss={ship.potentialLoss}
+            />
+          </div>
         ))}
       </div>
     </div>

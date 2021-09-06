@@ -142,3 +142,15 @@ h3 {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.cardCon {
+  grid-area: 1/2/3/3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.active{
+  width: 64px;
+  height: 64px;
+}
