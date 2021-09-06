@@ -3,7 +3,7 @@ import axios from 'axios'
 import { BASE_URL } from '../globals'
 import ShipCard from '../components/ShipCard'
 
-export default function Ships() {
+export default function Ships(props) {
   const [ships, setShips] = useState([])
   const [contractTrack, setContractTrack] = useState(0)
 
@@ -24,10 +24,12 @@ export default function Ships() {
         {ships.map((ship) => (
           <ShipCard
             key={ship._id}
+            objectId={ship._id}
             itemId={ship.itemId}
             name={ship.shipName}
             odds={ship.odds}
             core={ship.coreCount}
+            coreCost={ship.coreCost}
             capitol={ship.capitolReq}
             profit={ship.potentialProfit}
             loss={ship.potentialLoss}

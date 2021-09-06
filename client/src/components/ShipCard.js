@@ -1,3 +1,6 @@
+import axios from 'axios'
+import { BASE_URL } from '../globals'
+
 export default function ShipCard(props) {
   const URL = `https://images.evetech.net/types/${props.itemId}/render?size=128`
   const capitol = props.capitol.toLocaleString('en-US')
@@ -12,6 +15,16 @@ export default function ShipCard(props) {
     } else {
       props.setInput(Math.floor(e.target.value))
     }
+  }
+
+  const handleClick = async () => {
+    const res = await axios.put(`${BASE_URL}/contract/postcontract`, {
+      name: props.name,
+      odds: props.odds,
+      profit: props.profit,
+      loss: props.loss,
+      coreCost: props.coreCost
+    })
   }
 
   return (
@@ -54,7 +67,7 @@ export default function ShipCard(props) {
             value={props.inputVal}
             onChange={handleChange}
           ></input>
-          <button>Add</button>
+          <button onClick={handleClick}>Add</button>
         </div>
       </div>
     </div>

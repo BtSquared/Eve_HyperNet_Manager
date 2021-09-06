@@ -6,6 +6,7 @@ const Ship = new Schema(
     itemId: { type: Number, require: true },
     odds: { type: Number, require: true },
     coreCount: { type: Number, require: false },
+    coreCost: { type: Number, require: false },
     capitolReq: { type: Number, require: false },
     potentialProfit: { type: Number, require: false },
     potentialLoss: { type: Number, require: false }

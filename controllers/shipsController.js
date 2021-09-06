@@ -66,6 +66,7 @@ const MakeShips = async (req, res) => {
         itemId: ShipIds[i].itemId,
         odds: shipOdds.toFixed(3),
         coreCount: hyperCoreCount,
+        coreCost: hyperCoreCost,
         capitolReq: capitolRequired,
         potentialProfit: profit,
         potentialLoss: loss

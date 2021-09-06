@@ -26,9 +26,10 @@ const postContract = async (req, res) => {
 
 const updateContract = async (req, res) => {
   try {
+    console.log(req.body)
     const contractid = await Contract.find()
     const contract = await Contract.findByIdAndUpdate(contractid[0]._id, {
-      activeContracts: [...contractid, req.body]
+      activeContracts: [...contractid[0].activeContracts]
     })
     res.json(contract)
     // await Contract.findOneAndUpdate({ ObjectId: req.body.Id }, {})
