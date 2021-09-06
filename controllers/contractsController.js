@@ -39,6 +39,12 @@ const updateContract = async (req, res) => {
 
 const deleteContract = async (req, res) => {
   try {
+    const contractid = await Contract.find()
+    contractid[0].activeContracts.splice(req.body.index)
+    await Contract.findByIdAndUpdate(contractid[0]._id, {
+      activeContracts: [...contractid[0].activeContracts]
+    })
+    res.json({ contractid })
   } catch (err) {
     console.log(err)
   }
@@ -58,5 +64,6 @@ module.exports = {
   getContracts,
   postContract,
   updateContract,
-  nukeContract
+  nukeContract,
+  deleteContract
 }

@@ -144,7 +144,7 @@ input[type=number] {
 }
 
 .cardCon {
-  grid-area: 1/2/3/3;
+  
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
