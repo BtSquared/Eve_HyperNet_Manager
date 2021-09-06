@@ -8,7 +8,6 @@ const EstVal = mongoose.model('estvals', EstValSchema)
 const Contract = mongoose.model('contracts', ContractsSchema)
 
 module.exports = {
-  // Export Models Here
   Ship,
   EstVal,
   Contract

@@ -1,6 +1,4 @@
-const axios = require('axios')
-const { Ship, EstVal, Contract } = require('../models/index')
-const ShipIds = require('../ShipIds.json')
+const { Contract } = require('../models/index')
 
 const getContracts = async (req, res) => {
   try {
